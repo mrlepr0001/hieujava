@@ -5,37 +5,38 @@
  */
 package Model;
 
+import Entity.VITRI;
+import java.util.ArrayList;
+
 /**
  *
  * @author ADMIN
  */
-public class VITRIDAO {
-    private final static String FILE_URL = "CAUTHU.TXT";
-    public ArrayList<CAUTHU> docCauThu() {
+public class VITRIDAO extends VAORAFILE{
+    private final static String FILE_URL = "VITRI.TXT";
+    public ArrayList<VITRI> docViTri() {
         ArrayList<String> data = docFile();
-        ArrayList<CAUTHU> dsCauThu = null;
-        for (String cauThuStr : data) {
-            String[] arrCauThu = cauThuStr.split("|");
-            int maCauThu = Integer.parseInt(arrCauThu[0]);
-            String hoTen = arrCauThu[1];
-            int tuoi = Integer.parseInt(arrCauThu[2]);
-            double mucLuong = Double.parseDouble(arrCauThu[3]);
-            CAUTHU cauThu = new CAUTHU(maCauThu, hoTen, tuoi, mucLuong);
-            dsCauThu.add(cauThu);
+        ArrayList<VITRI> dsViTri = null;
+        for (String viTriStr : data) {
+            String[] arrViTri = viTriStr.split("|");
+            int maVT = Integer.parseInt(arrViTri[0]);
+            String tenVT = arrViTri[1];            
+            double mucThuong = Double.parseDouble(arrViTri[2]);
+            VITRI viTri = new VITRI(maVT, tenVT, mucThuong);
+            dsViTri.add(viTri);
         }
-        return dsCauThu;
+        return dsViTri;
     }
     
-    public void ghiCauThu(ArrayList<CAUTHU> dsCauThu) {
-        ArrayList<String> dsCauThuStr = null;
-        for (CAUTHU cauThu : dsCauThu) {
-            String cauThuStr = "";
-            cauThuStr += cauThu.getMaCT() + "|";
-            cauThuStr += cauThu.getHoTen() + "|";
-            cauThuStr += cauThu.getTuoi() + "|";
-            cauThuStr += cauThu.getMucLuong() + "|";
-            dsCauThuStr.add(cauThuStr);
+    public void ghiViTri(ArrayList<VITRI> dsViTri) {
+        ArrayList<String> dsViTriStr = null;
+        for (VITRI viTri : dsViTri) {
+            String viTriStr = "";
+            viTriStr += viTri.getMaVT() + "|";
+            viTriStr += viTri.getTenVT() + "|";
+            viTriStr += viTri.getMucThuong() + "|";
+            dsViTriStr.add(viTriStr);
         }
-        ghiFile(dsCauThuStr);
+        ghiFile(dsViTriStr);
     }
 }

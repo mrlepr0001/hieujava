@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/NguyenVanHieu_B15DCCN214/src/View/CAUTHU.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/NguyenVanHieu_B15DCCN214/src/Entity/Cau_thu.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/NguyenVanHieu_B15DCCN214/src/View/PHANCONGVITRI.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/NguyenVanHieu_B15DCCN214/src/View/Menu.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/NguyenVanHieu_B15DCCN214/src/View/VITRI.java</file>
-            <file>file:/C:/Users/ADMIN/Documents/NetBeansProjects/NguyenVanHieu_B15DCCN214/src/View/Them_Sua_CT.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/View/Them_Sua_CT.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/View/BTKTT.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/View/VITRI.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/View/CAUTHU.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/View/PHANCONGVITRI.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/Model/TRANDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/Model/VITRIDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/Entity/PCVT.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/View/Menu.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/Entity/TRAN.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/View/Them_Sua_VT.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/hieujava/src/Model/CAUTHUDAO.java</file>
         </group>
     </open-files>
 </project-private>
