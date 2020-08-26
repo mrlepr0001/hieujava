@@ -5,7 +5,7 @@
  */
 package View.ViTri;
 
-import View.MENU;
+import View.Main.MENU;
 
 /**
  *

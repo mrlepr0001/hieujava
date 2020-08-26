@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.ViTri;
+package View.PhanCong;
 
-import View.MENU;
+import View.Main.MENU;
 
 /**
  *
