@@ -17,9 +17,6 @@ import java.util.logging.Logger;
 public class VAORAFILE {
     private String fileURL;
 
-    public VAORAFILE() {
-    }
-
     public VAORAFILE(String fileURL) {
         this.fileURL = fileURL;
     }
@@ -34,7 +31,7 @@ public class VAORAFILE {
    
     public ArrayList<String> docFile() {
         InputStream inputStream = null;
-        ArrayList<String> data = null;
+        ArrayList<String> data = new ArrayList<>();
         try {
             File file = new File(fileURL);
             inputStream = new FileInputStream(file);
