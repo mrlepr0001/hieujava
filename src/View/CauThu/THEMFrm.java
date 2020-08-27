@@ -55,36 +55,36 @@ public class THEMFrm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ma CT: ");
+        jLabel1.setText("Mã cầu thủ:");
 
-        jLabel2.setText("Ten CT: ");
+        jLabel2.setText("Họ tên:");
 
-        jLabel3.setText("Tuoi:");
+        jLabel3.setText("Tuổi:");
 
-        jLabel4.setText("Muc Luong: ");
+        jLabel4.setText("Mức lương");
 
-        jButton1.setText("Ve Trang Chu");
+        jButton1.setText("Về trang chủ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Luu");
+        jButton2.setText("Lưu");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Xoa thong tin");
+        jButton3.setText("Xóa thông tin");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Huy Them");
+        jButton4.setText("Hủy thêm");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -116,7 +116,7 @@ public class THEMFrm extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addGap(24, 24, 24))
         );

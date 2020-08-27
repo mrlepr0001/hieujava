@@ -7,6 +7,7 @@ package View.Main;
 
 import View.CauThu.CAUTHUFrm;
 import View.PhanCong.PHANCONGVITRIFrm;
+import View.ThongKe.BTKTTFrm;
 import View.ViTri.VITRIFrm;
 
 /**
@@ -56,14 +57,19 @@ public class MENUFrm extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Quản lý đội bóng");
+        jButton3.setText("Phân công vị trí");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Phân công vị trí");
+        jButton4.setText("Thống kê mức thưởng");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Public/thumbnail.png"))); // NOI18N
 
@@ -128,6 +134,12 @@ public class MENUFrm extends javax.swing.JFrame {
         phanCongViTri.show();
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        BTKTTFrm tk = new BTKTTFrm();
+        tk.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

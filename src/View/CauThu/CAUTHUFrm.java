@@ -9,6 +9,7 @@ import Entity.CAUTHU;
 import Model.CAUTHUDAO;
 import View.Main.MENUFrm;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -59,28 +60,33 @@ public class CAUTHUFrm extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "MaCT", "TenCT", "Tuoi", "Muc Luong"
+                "Mã cầu thủ", "Họ tên", "Tuổi", "Mức lương"
             }
         ));
         jScrollPane1.setViewportView(tblDSCT);
 
-        jButton1.setText("Them");
+        jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sua");
+        jButton2.setText("Sửa");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Xoa");
+        jButton3.setText("Xóa");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Ve Trang Chu");
+        jButton4.setText("Về trang chủ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -151,6 +157,20 @@ public class CAUTHUFrm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(frame, "Bạn chưa chọn cầu thủ!");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            int row = tblDSCT.getSelectedRow();
+            int maCT = (int) tblDSCT.getModel().getValueAt(row, 0);
+            int index = dsCauThu.stream().map(cauThu -> cauThu.getMaCT()).collect(Collectors.toList()).indexOf(maCT);
+            dsCauThu.remove(index);
+            cauThuDAO.ghiCauThu(dsCauThu);
+            hienThiCauThu();
+        } catch (Exception e) {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame, "Bạn chưa chọn cầu thủ!");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

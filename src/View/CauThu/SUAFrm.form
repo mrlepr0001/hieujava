@@ -93,17 +93,17 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ma CT: "/>
+        <Property name="text" type="java.lang.String" value="M&#xe3; c&#x1ea7;u th&#x1ee7;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ten CT: "/>
+        <Property name="text" type="java.lang.String" value="H&#x1ecd; t&#xea;n:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tuoi:"/>
+        <Property name="text" type="java.lang.String" value="Tu&#x1ed5;i:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tuoi">
@@ -112,7 +112,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Muc Luong: "/>
+        <Property name="text" type="java.lang.String" value="M&#x1ee9;c l&#x1b0;&#x1a1;ng"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">

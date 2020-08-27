@@ -16,7 +16,10 @@ public class VITRI {
 
     public VITRI() {
     }
-
+    
+    public VITRI(int maVT) {
+        this.maVT = maVT;
+    }
     
     public VITRI(int maVT, String tenVT, double mucThuong) {
         this.maVT = maVT;
@@ -48,7 +51,11 @@ public class VITRI {
     public void setMucThuong(double mucThuong) {
         this.mucThuong = mucThuong;
     }
-    
+
+    @Override
+    public String toString() {
+        return getTenVT();
+    }
 }
 
 

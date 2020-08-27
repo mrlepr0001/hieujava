@@ -11,15 +11,15 @@ package Entity;
  */
 public class PCVT {
     private CAUTHU cauThu;
-    private TRAN tran;
     private VITRI viTri;
+    private int soTran;
 
     public PCVT() {
     }
 
-    public PCVT(CAUTHU cauThu, TRAN tran, VITRI viTri) {
+    public PCVT(CAUTHU cauThu, VITRI viTri, int soTran) {
         this.cauThu = cauThu;
-        this.tran = tran;
+        this.soTran = soTran;
         this.viTri = viTri;
     }
 
@@ -31,14 +31,6 @@ public class PCVT {
         this.cauThu = cauThu;
     }
 
-    public TRAN getTran() {
-        return tran;
-    }
-
-    public void setTran(TRAN tran) {
-        this.tran = tran;
-    }
-
     public VITRI getViTri() {
         return viTri;
     }
@@ -46,6 +38,12 @@ public class PCVT {
     public void setViTri(VITRI viTri) {
         this.viTri = viTri;
     }
-    
-    
+
+    public void setSoTran(int soTran) {
+        this.soTran = soTran;
+    }
+
+    public int getSoTran() {
+        return soTran;
+    }   
 }
