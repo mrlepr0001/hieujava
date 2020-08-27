@@ -5,19 +5,49 @@
  */
 package View.PhanCong;
 
+import Entity.PCVT;
+import Entity.CAUTHU;
+import Entity.VITRI;
+import Model.PCVTDAO;
 import View.Main.MENUFrm;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.stream.Collectors;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author ADMIN
  */
 public class PHANCONGVITRIFrm extends javax.swing.JFrame {
-
-    /**
-     * Creates new form PHANCONGVITRI
-     */
+    ArrayList<PCVT> dsPhanCong = new ArrayList<>();
+    PCVTDAO PCVTDAO = new PCVTDAO();
+    DefaultTableModel model = new DefaultTableModel();
+    String[] xepTheo = new String[]{"Họ tên Tăng dần",
+        "Họ tên Giảm dần",
+        "Số trận thi đấu Tăng dần",
+        "Số trận thi đấu Giảm dần"};
+    
     public PHANCONGVITRIFrm() {
         initComponents();
+        
+        cbXepTheo.removeAllItems();
+        cbXepTheo.addItem("Lựa chọn");
+        cbXepTheo.addItem("Họ tên");
+        cbXepTheo.addItem("Số trận thi đấu");
+        
+        cbKieu.removeAllItems();
+        cbKieu.addItem("Lựa chọn");
+        cbKieu.addItem("Tăng dần");
+        cbKieu.addItem("Giảm dần");
+        
+        model = (DefaultTableModel) tblPhanCong.getModel();
+        this.dsPhanCong = PCVTDAO.docPhanCong();
+        hienThiPhanCong();
     }
 
     /**
@@ -30,15 +60,20 @@ public class PHANCONGVITRIFrm extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        tblPhanCong = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        cbXepTheo = new javax.swing.JComboBox<>();
+        cbKieu = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPhanCong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -50,21 +85,51 @@ public class PHANCONGVITRIFrm extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "MaCT", "MaVT", "So lan ra san"
+                "Tên cầu thủ", "Vị trí", "Số trận"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPhanCong);
 
-        jButton1.setText("Them");
-
-        jButton2.setText("Sua");
-
-        jButton3.setText("Xoa");
-
-        jButton4.setText("Ve Trang Chu");
+        jButton4.setText("Về trang chủ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Xắp xếp");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        cbXepTheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbKieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel1.setText("Xếp theo:");
+
+        jLabel2.setText("Kiểu xếp:");
+
+        jButton5.setText("Xóa");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Sửa");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Thêm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -76,28 +141,52 @@ public class PHANCONGVITRIFrm extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(20, 20, 20)
+                                    .addComponent(cbKieu, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cbXepTheo, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3)
+                            .addGap(89, 89, 89))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cbXepTheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cbKieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jButton4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton5)
+                        .addComponent(jButton2)
+                        .addComponent(jButton1)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -108,6 +197,62 @@ public class PHANCONGVITRIFrm extends javax.swing.JFrame {
         menu.show();
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            String xepTheo = (String) cbXepTheo.getSelectedItem();
+            String kieu = (String) cbKieu.getSelectedItem();
+            if("Lựa chọn".equals(xepTheo) || "Lựa chọn".equals(kieu)) {
+                throw new NullPointerException("Lựa chọn của bạn chưa đầy đủ! Hãy chọn lại trường và kiểu muốn xắp xếp");
+            }
+             
+            xapXep(xepTheo, kieu);
+        
+        } catch (Exception e) {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try {
+            int row = tblPhanCong.getSelectedRow();
+            CAUTHU cauThu = (CAUTHU) tblPhanCong.getModel().getValueAt(row, 0);
+            VITRI viTri = (VITRI) tblPhanCong.getModel().getValueAt(row, 1);
+            int index = dsPhanCong.stream().map(
+                pc -> pc.getCauThu().getMaCT() + pc.getViTri().getMaVT())
+                .collect(Collectors.toList()).indexOf(cauThu.getMaCT() + viTri.getMaVT());
+            dsPhanCong.remove(index);
+            PCVTDAO.ghiPhanCong(dsPhanCong);
+            hienThiPhanCong();
+        } catch (Exception e) {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame, "Bạn chưa chọn cầu thủ!");
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            int row = tblPhanCong.getSelectedRow();
+            CAUTHU cauThu = (CAUTHU) tblPhanCong.getModel().getValueAt(row, 0);
+            VITRI viTri = (VITRI) tblPhanCong.getModel().getValueAt(row, 1);
+            int soTran = (int) tblPhanCong.getModel().getValueAt(row, 2);
+            
+            PCVT pc = new PCVT(cauThu, viTri, soTran);
+            SUAFrm suaFrm = new SUAFrm(pc);
+            suaFrm.show();
+            this.dispose();
+        } catch (Exception e) {
+            JFrame frame = new JFrame("");
+            JOptionPane.showMessageDialog(frame, "Bạn chưa chọn giá trị phân công!");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        THEMFrm them = new THEMFrm();
+        them.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,11 +291,51 @@ public class PHANCONGVITRIFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbKieu;
+    private javax.swing.JComboBox<String> cbXepTheo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPhanCong;
     // End of variables declaration//GEN-END:variables
+
+    private void hienThiPhanCong() {
+        model.setRowCount(0);
+        for (PCVT phanCong : dsPhanCong) {
+            Object[] row = {
+                phanCong.getCauThu(),
+                phanCong.getViTri(),
+                phanCong.getSoTran()};
+            model.addRow(row);
+        }
+    }
+
+    private void xapXep(String xepTheo, String kieu) {
+        int index = Arrays.asList(this.xepTheo).indexOf(xepTheo + " " + kieu);
+        
+        switch(index){
+            case 0:
+                Comparator<PCVT> pcvt0 = (PCVT o1, PCVT o2) -> o1.getCauThu().getHoTen().compareTo(o2.getCauThu().getHoTen());
+                Collections.sort(dsPhanCong, pcvt0);
+                break;
+            case 1:
+                Comparator<PCVT> pcvt1 = (PCVT o1, PCVT o2) -> o2.getCauThu().getHoTen().compareTo(o1.getCauThu().getHoTen());
+                Collections.sort(dsPhanCong, pcvt1);
+                break;
+            case 2:
+                Comparator<PCVT> pcvt2 = (PCVT o1, PCVT o2) -> new Integer(o1.getSoTran()).compareTo(o2.getSoTran());
+                Collections.sort(dsPhanCong, pcvt2);
+                break;
+            case 3:
+                Comparator<PCVT> pcvt3 = (PCVT o1, PCVT o2) -> new Integer(o2.getSoTran()).compareTo(o1.getSoTran());
+                Collections.sort(dsPhanCong, pcvt3);
+                break;
+        }
+        hienThiPhanCong();
+    }
 }

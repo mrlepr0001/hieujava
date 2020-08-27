@@ -17,7 +17,11 @@ public class CAUTHU {
     
     public CAUTHU() {
     }
-
+   
+    public CAUTHU(int maCT) {
+        this.maCT = maCT;
+    }
+    
     public CAUTHU(int maCT, String hoTen, int tuoi, double mucLuong) {
         this.maCT = maCT;
         this.hoTen = hoTen;
@@ -55,6 +59,11 @@ public class CAUTHU {
 
     public void setMucLuong(double mucLuong) {
         this.mucLuong = mucLuong;
+    }
+
+    @Override
+    public String toString() {
+        return getHoTen();
     }
 }
 

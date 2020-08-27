@@ -95,7 +95,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; &#x111;&#x1ed9;i b&#xf3;ng"/>
+        <Property name="text" type="java.lang.String" value="Ph&#xe2;n c&#xf4;ng v&#x1ecb; tr&#xed;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -103,8 +103,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ph&#xe2;n c&#xf4;ng v&#x1ecb; tr&#xed;"/>
+        <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea; m&#x1ee9;c th&#x1b0;&#x1edf;ng"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="image">
       <Properties>

@@ -5,17 +5,31 @@
  */
 package View.ThongKe;
 
+import Entity.CAUTHU;
+import Entity.PCVT;
+import Entity.VITRI;
+import Model.CAUTHUDAO;
+import Model.PCVTDAO;
+import Model.VITRIDAO;
+import View.Main.MENUFrm;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ADMIN
  */
 public class BTKTTFrm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BTKTT
-     */
+    ArrayList<PCVT> dsPhanCong = new PCVTDAO().docPhanCong();
+    ArrayList<CAUTHU> dsCauThu = new CAUTHUDAO().docCauThu();
+    PCVTDAO PCVTDAO = new PCVTDAO();
+    DefaultTableModel model = new DefaultTableModel();
+    
     public BTKTTFrm() {
         initComponents();
+        model = (DefaultTableModel) tblThongKe.getModel();
+        hienThiThongKe();
     }
 
     /**
@@ -28,12 +42,12 @@ public class BTKTTFrm extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblThongKe = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblThongKe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -44,12 +58,17 @@ public class BTKTTFrm extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Ma cau thu", "Ten cau thu", "Tong so tien thuong"
+                "Mã cầu thủ", "Tên cầu thủ", "Tổng tiền thưởng"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblThongKe);
 
-        jButton1.setText("Ve Trang Chu");
+        jButton1.setText("Về trang chủ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,6 +93,12 @@ public class BTKTTFrm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MENUFrm menu = new MENUFrm();
+        menu.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,10 +135,34 @@ public class BTKTTFrm extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void hienThiThongKe() {
+        model.setRowCount(0);
+        for (CAUTHU cauThu : dsCauThu) {
+            System.out.println(cauThu.getHoTen());
+            Object[] row = {
+                cauThu.getMaCT(),
+                cauThu.getHoTen(),
+                tongTien(cauThu)
+            };
+            model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblThongKe;
     // End of variables declaration//GEN-END:variables
+
+    private double tongTien(CAUTHU cauThu) {
+        double tongTien = 0;
+        for (PCVT pcvt : dsPhanCong) {
+            if(pcvt.getCauThu().getMaCT() == cauThu.getMaCT()) {
+                tongTien += pcvt.getSoTran() * pcvt.getViTri().getMucThuong();
+            }
+        }
+        tongTien += cauThu.getMucLuong() * 0.1;
+        return tongTien;
+    }
 }
