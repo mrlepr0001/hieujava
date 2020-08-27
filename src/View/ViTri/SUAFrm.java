@@ -3,32 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.CauThu;
+package View.ViTri;
 
 import Entity.CAUTHU;
+import Entity.VITRI;
 import Model.CAUTHUDAO;
+import Model.VITRIDAO;
 import View.Main.MENUFrm;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.text.AbstractDocument.Content;
 
 /**
  *
  * @author ADMIN
  */
-public class THEMFrm extends javax.swing.JFrame {
-    ArrayList<CAUTHU> dsCauThu = new ArrayList<>();
-    CAUTHUDAO cauThuDAO = new CAUTHUDAO();
-    int idCT = 0;
+public class SUAFrm extends javax.swing.JFrame {
+    ArrayList<VITRI> dsViTri = new ArrayList<>();
+    VITRIDAO viTriDAO = new VITRIDAO();
+    VITRI viTri = new VITRI();
     /**
      * Creates new form Them_Sua_CT
      */
-    public THEMFrm() {
+    public SUAFrm(VITRI viTri) {
         initComponents();
-        this.dsCauThu = cauThuDAO.docCauThu();
-        this.idCT = dsCauThu.get(dsCauThu.size() - 1).getMaCT() + 1;
-        maCT.setText(this.idCT + "");
+        this.dsViTri = viTriDAO.docViTri();
+        this.viTri = viTri;
+        txtTenVT.setText(viTri.getTenVT()+ "");
+        txtMaVT.setText(viTri.getMaVT()+ "");
+        txtMucThuong.setText(viTri.getMucThuong() + "");
+    }
+
+    private SUAFrm() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -43,25 +51,21 @@ public class THEMFrm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tuoi = new javax.swing.JTextField();
-        mucLuong = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        txtMucThuong = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        tenCT = new javax.swing.JTextField();
+        txtTenVT = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        maCT = new javax.swing.JLabel();
+        txtMaVT = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Mã cầu thủ:");
+        jLabel1.setText("Mã vị trí:");
 
-        jLabel2.setText("Họ tên:");
+        jLabel2.setText("Tên vị trí:");
 
-        jLabel3.setText("Tuổi:");
-
-        jLabel4.setText("Mức lương");
+        jLabel3.setText("Mức thưởng:");
 
         jButton1.setText("Về trang chủ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +88,7 @@ public class THEMFrm extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Hủy thêm");
+        jButton4.setText("Hủy Sửa");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -100,46 +104,40 @@ public class THEMFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mucLuong)
-                            .addComponent(tuoi)
-                            .addComponent(tenCT)
-                            .addComponent(maCT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtMucThuong)
+                            .addComponent(txtTenVT)
+                            .addComponent(txtMaVT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(maCT, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaVT, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tenCT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTenVT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tuoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mucLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(32, 32, 32)
+                    .addComponent(txtMucThuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
@@ -152,7 +150,7 @@ public class THEMFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        CAUTHUFrm cauthu = new CAUTHUFrm();
+        VITRIFrm cauthu = new VITRIFrm();
         cauthu.show();
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -164,36 +162,26 @@ public class THEMFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int maCT = Integer.parseInt(this.maCT.getText());
-        String tenCT = this.tenCT.getText();
-        int tuoi = Integer.parseInt(this.tuoi.getText());
-        double mucLuong = Double.parseDouble(this.mucLuong.getText());
+        int maVT = Integer.parseInt(this.txtMaVT.getText());
+        String tenVT = this.txtTenVT.getText();
+        double mucThuong = Double.parseDouble(this.txtMucThuong.getText());
         
-        this.dsCauThu.add(new CAUTHU(maCT, tenCT, tuoi, mucLuong));
+        VITRI suaViTri = new VITRI(maVT, tenVT, mucThuong);
+        int index = dsViTri.stream().map(cauThu -> cauThu.getMaVT()).collect(Collectors.toList()).indexOf(maVT);
+        dsViTri.set(index, suaViTri);
         
-        this.cauThuDAO.ghiCauThu(this.dsCauThu);
-        JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-        Object[] options = {"Tiếp tục thêm", "Xem danh sách cầu thủ"};
-        int n = JOptionPane.showOptionDialog(frame, "Thêm cầu thủ thành công!", "",
-                JOptionPane.YES_NO_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-        if(n == 0) {
-            this.idCT++;
-            this.maCT.setText(this.idCT + "");
-            this.tenCT.setText("");
-            this.tuoi.setText("");
-            this.mucLuong.setText("");
-        } else {
-            CAUTHUFrm cauThuFrm = new CAUTHUFrm();
-            cauThuFrm.show();
-            this.dispose();
-        }
+        JFrame frame = new JFrame("");
+        JOptionPane.showMessageDialog(frame, "Sửa thành công!");
+        this.viTriDAO.ghiViTri(this.dsViTri);
+        VITRIFrm cauThuFrm = new VITRIFrm();
+        cauThuFrm.show();
+        this.dispose();      
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.tenCT.setText("");
-        this.tuoi.setText("");
-        this.mucLuong.setText("");
+        this.txtTenVT.setText("");
+        this.txtMucThuong.setText("");
+        this.txtMucThuong.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -213,14 +201,26 @@ public class THEMFrm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(THEMFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SUAFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(THEMFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SUAFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(THEMFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SUAFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(THEMFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SUAFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -229,7 +229,7 @@ public class THEMFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new THEMFrm().setVisible(true);
+                new SUAFrm().setVisible(true);
             }
         });
     }
@@ -242,10 +242,8 @@ public class THEMFrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel maCT;
-    private javax.swing.JTextField mucLuong;
-    private javax.swing.JTextField tenCT;
-    private javax.swing.JTextField tuoi;
+    private javax.swing.JLabel txtMaVT;
+    private javax.swing.JTextField txtMucThuong;
+    private javax.swing.JTextField txtTenVT;
     // End of variables declaration//GEN-END:variables
 }

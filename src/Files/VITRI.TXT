@@ -1,3 +1,6 @@
-1-TIEN DAO-100.0
-2-HAU VE-100.0
-3-TRUNG VE-100.0
+1-Tiền đạo phải-100.0
+2-Hậu vệ cánh phải-100.0
+3-Hậu vệ trái-300.0
+4-Trung vệ-100.0
+5-Tiền đạo-200.0
+6-Hậu vệ phải-300.0

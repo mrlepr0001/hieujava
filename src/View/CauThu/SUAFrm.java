@@ -9,6 +9,7 @@ import Entity.CAUTHU;
 import Model.CAUTHUDAO;
 import View.Main.MENUFrm;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -61,13 +62,13 @@ public class SUAFrm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ma CT: ");
+        jLabel1.setText("Mã cầu thủ:");
 
-        jLabel2.setText("Ten CT: ");
+        jLabel2.setText("Họ tên:");
 
-        jLabel3.setText("Tuoi:");
+        jLabel3.setText("Tuổi:");
 
-        jLabel4.setText("Muc Luong: ");
+        jLabel4.setText("Mức lương");
 
         jButton1.setText("Về trang chủ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -176,12 +177,8 @@ public class SUAFrm extends javax.swing.JFrame {
         double mucLuong = Double.parseDouble(this.mucLuong.getText());
         
         CAUTHU suaCauThu = new CAUTHU(maCT, tenCT, tuoi, mucLuong);
-        
-        for(int i = 0; i < dsCauThu.size(); i++) {
-            if(dsCauThu.get(i).getMaCT() == suaCauThu.getMaCT()) {
-                dsCauThu.set(i, suaCauThu);
-            }
-        }
+        int index = dsCauThu.stream().map(cauThu -> cauThu.getMaCT()).collect(Collectors.toList()).indexOf(maCT);
+        dsCauThu.set(index, suaCauThu);
         
         JFrame frame = new JFrame("");
         JOptionPane.showMessageDialog(frame, "Sửa thành công!");
